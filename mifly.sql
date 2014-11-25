@@ -1,4 +1,4 @@
-connect 'jdbc:derby:albumsdb;create=true';
+connect 'jdbc:derby:mifly;create=true';
 
 CREATE TABLE ServiceArea
 (
@@ -9,6 +9,7 @@ CREATE TABLE ServiceArea
 CREATE TABLE Airports
 (
 	Port_Name	VARCHAR(20) NOT NULL,
+	Area		VARCHAR(20) NOT NULL,
 	Location	VARCHAR(20) NOT NULL,
 	FAA_abbr	VARCHAR(3) NOT NULL,
 	CONSTRAINT pk_airports PRIMARY KEY (FAA_abbr)
@@ -16,11 +17,14 @@ CREATE TABLE Airports
   
 CREATE TABLE Flights
 (
-	Length		INTEGER(3) NOT NULL,
+	F_Length	INTEGER(3) NOT NULL,
 	Dept_Time	TIME NOT NULL,
 	Arr_Time	TIME NOT NULL,
-	Date		DATE NOT NULL,
-	CONSTRAINT pk_flights PRIMARY KEY (Dept_Time,Arr_Time,Date)
+	F_Date		DATE NOT NULL,
+	Airline_Name	VARCHAR(20) NOT NULL,
+	Arr_Port	VARCHAR(20) NOT NULL,
+	Dept_Port	VARCHAR(20) NOT NULL,
+	CONSTRAINT pk_flights PRIMARY KEY (Dept_Time,Arr_Time,F_Date)
 );
   
 CREATE TABLE Airlines
@@ -49,7 +53,7 @@ CREATE TABLE Crew
 
 CREATE TABLE Cost
 (
-	Type		VARCHAR(20) NOT NULL,
+	C_Type		VARCHAR(20) NOT NULL,
 	Cost		INTEGER(3) NOT NULL,
 	Check_Bags	BOOLEAN NOT NULL,
 	CONSTRAINT pk_cost PRIMARY KEY (FAA_Tail)
@@ -59,43 +63,51 @@ CREATE TABLE Personnel
 (
 	Emp_ID		INTEGER(4) NOT NULL,
 	Emp_Name	VARCHAR(20) NOT NULL,
-	Type		VARCHAR(20) NOT NULL,
-	CONSTRAINT pk_flightcrew PRIMARY KEY (Emp_ID)
+	E_Type		VARCHAR(20) NOT NULL,
+	CONSTRAINT pk_personnel PRIMARY KEY (Emp_ID)
 );
 
 CREATE TABLE FlightCrew
 (
+	Emp_ID		INTEGER(4) NOT NULL,
 	Emp_Name	VARCHAR(20) NOT NULL,
 	Job		VARCHAR(20) NOT NULL,
 	FAA_num		INTEGER(4) NOT NULL,
-	CONSTRAINT pk_flightcrew PRIMARY KEY (FAA_num)
+	CONSTRAINT pk_flightcrew PRIMARY KEY (Emp_ID)
 );
 
 CREATE TABLE GroundWorkers
 (
+	Emp_ID		INTEGER(4) NOT NULL,
 	Emp_Name	VARCHAR(20) NOT NULL,
-	Job		VARCHAR(20) NOT NULL,
-	FAA_num		INTEGER(4) NOT NULL,
-	CONSTRAINT pk_flightcrew PRIMARY KEY (FAA_num)
+	Job			VARCHAR(20) NOT NULL,
+	CONSTRAINT pk_groundworkers PRIMARY KEY (Emp_ID)
 );
 
 CREATE TABLE IncidentReports
 (
-	Emp_Name	VARCHAR(20) NOT NULL,
-	Job		VARCHAR(20) NOT NULL,
-	FAA_num		INTEGER(4) NOT NULL,
-	CONSTRAINT pk_flightcrew PRIMARY KEY (FAA_num)
+	Emp_Filed	VARCHAR(20) NOT NULL,
+	Emp_Reported	VARCHAR(20) NOT NULL,
+	Inc_Type	VARCHAR(20) NOT NULL,
+	I_Desc		VARCHAR(20) NOT NULL,
+	Date_filed	DATE NOT NULL,
+	CONSTRAINT pk_increports PRIMARY KEY (Emp_Filed,Emp_Reported,Date_filed)
 );
 
-ALTER TABLE albums
-          ADD CONSTRAINT groups_albums_fk
-          FOREIGN KEY (g_name),
-          REFERENCES groups (g_name);
+ALTER TABLE Airports
+	ADD CONSTRAINT airports_servicearea_fk
+	FOREIGN KEY (Area),
+	REFERENCES ServiceArea (Area);
 		  
-ALTER TABLE albums
-          ADD CONSTRAINT studios_albums_fk
-          FOREIGN KEY (s_name),
-          REFERENCES studios (s_name);
+ALTER TABLE Flights
+	ADD CONSTRAINT flights_airports_fk
+	FOREIGN KEY (FAA_abbr),
+	REFERENCES Airports (FAA_abbr);
+		  
+ALTER TABLE Flights
+	ADD CONSTRAINT flights_airlines_fk
+	FOREIGN KEY (Airline_Name),
+	REFERENCES Airlines (Airline_Name);
 		  
 INSERT INTO groups VALUES('Paramore','Haley Williams','2004','alternative rock');
 INSERT INTO groups VALUES('Queen','Freddie Mercury','1970','opera rock');
