@@ -17,14 +17,13 @@ CREATE TABLE Airports
   
 CREATE TABLE Flights
 (
+	Flight_Num	VARCHAR(4) NOT NULL,
 	F_Length	INTEGER(3) NOT NULL,
 	Dept_Time	TIME NOT NULL,
 	Arr_Time	TIME NOT NULL,
 	F_Date		DATE NOT NULL,
 	Airline_Name	VARCHAR(20) NOT NULL,
-	Arr_Port	VARCHAR(20) NOT NULL,
-	Dept_Port	VARCHAR(20) NOT NULL,
-	CONSTRAINT pk_flights PRIMARY KEY (Dept_Time,Arr_Time,F_Date)
+	CONSTRAINT pk_flights PRIMARY KEY (Flight_Num,Dept_Time,Arr_Time,F_Date)
 );
   
 CREATE TABLE Airlines
@@ -37,6 +36,7 @@ CREATE TABLE Airlines
 
 CREATE TABLE Planes
 (
+	Airline_Name VARCHAR(20) NOT NULL,
 	FAA_Tail	VARCHAR(20) NOT NULL,
 	Manufacturer	VARCHAR(20) NOT NULL,
 	Model_Num	VARCHAR(20) NOT NULL,
@@ -47,12 +47,14 @@ CREATE TABLE Planes
 
 CREATE TABLE Crew
 (
+	Flight_Num	VARCHAR(4) NOT NULL,
 	Attndt_Qty	INTEGER(3) NOT NULL,
 	CONSTRAINT pk_crew PRIMARY KEY (FAA_Tail)
 );
 
 CREATE TABLE Cost
 (
+	Flight_Num	VARCHAR(4) NOT NULL,
 	C_Type		VARCHAR(20) NOT NULL,
 	Cost		INTEGER(3) NOT NULL,
 	Check_Bags	BOOLEAN NOT NULL,
@@ -109,10 +111,20 @@ ALTER TABLE Flights
 	FOREIGN KEY (Airline_Name),
 	REFERENCES Airlines (Airline_Name);
 
-ALTER TABLE Flights
-	ADD CONSTRAINT flights_airlines_fk
+ALTER TABLE Planes
+	ADD CONSTRAINT planes_airlines_fk
 	FOREIGN KEY (Airline_Name),
 	REFERENCES Airlines (Airline_Name);
+	
+ALTER TABLE Crew
+	ADD CONSTRAINT crew_flights_fk
+	FOREIGN KEY (Flight_Num),
+	REFERENCES Flights (Flight_Num);
+	
+ALTER TABLE Crew
+	ADD CONSTRAINT crew_flightcrew_fk
+	FOREIGN KEY (FAA_num),
+	REFERENCES FlightCrew (FAA_num);
 		  
 INSERT INTO groups VALUES('Paramore','Haley Williams','2004','alternative rock');
 INSERT INTO groups VALUES('Queen','Freddie Mercury','1970','opera rock');
