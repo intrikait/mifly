@@ -108,6 +108,11 @@ ALTER TABLE Flights
 	ADD CONSTRAINT flights_airlines_fk
 	FOREIGN KEY (Airline_Name),
 	REFERENCES Airlines (Airline_Name);
+
+ALTER TABLE Flights
+	ADD CONSTRAINT flights_airlines_fk
+	FOREIGN KEY (Airline_Name),
+	REFERENCES Airlines (Airline_Name);
 		  
 INSERT INTO groups VALUES('Paramore','Haley Williams','2004','alternative rock');
 INSERT INTO groups VALUES('Queen','Freddie Mercury','1970','opera rock');
