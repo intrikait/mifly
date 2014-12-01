@@ -1,0 +1,11 @@
+-List all airlines for a given airport
+-List all flights for a given airline (sorted by starting location, destination, longest or shortest flight)
+-Flights that charge for extras
+-List crew roster for each flight for each airline
+-List flights available for one stop over (dunno what this is????)
+-Management reports that include:
+	Arriving flights per city
+	Departing flights per city
+	List of airlines in each service category (international, local, etc.)
+	Crews that fly multiple flights in a single day
+-List of all incident reports by flight
