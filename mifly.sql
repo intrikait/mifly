@@ -18,10 +18,10 @@ CREATE TABLE Airports
 CREATE TABLE Flights
 (
 	Flight_Num	VARCHAR(4) NOT NULL,
-	F_Length	INTEGER(3) NOT NULL,
 	Dept_Time	TIME NOT NULL,
 	Arr_Time	TIME NOT NULL,
 	F_Date		DATE NOT NULL,
+	F_Length	INTEGER(3) NOT NULL,
 	Airline_Name	VARCHAR(20) NOT NULL,
 	CONSTRAINT pk_flights PRIMARY KEY (Flight_Num,Dept_Time,Arr_Time,F_Date)
 );
