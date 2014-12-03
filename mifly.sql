@@ -8,18 +8,19 @@ CREATE TABLE ServiceArea
 
 CREATE TABLE Airports
 (
+	FAA_Abbr	VARCHAR(3) NOT NULL,
 	Port_Name	VARCHAR(20) NOT NULL,
 	Area		VARCHAR(20) NOT NULL,
 	Location	VARCHAR(20) NOT NULL,
-	FAA_abbr	VARCHAR(3) NOT NULL,
-	CONSTRAINT pk_airports PRIMARY KEY (FAA_abbr)
+	CONSTRAINT pk_airports PRIMARY KEY (FAA_Abbr)
 );
   
 CREATE TABLE Flights
 (
 	Flight_Num	VARCHAR(4) NOT NULL,
-	Dept_Time	TIME NOT NULL,
-	Arr_Time	TIME NOT NULL,
+	Arr_Port	VARCHAR(3) NOT NULL,
+	Dept_Port	VARCHAR(3) NOT NULL,
+	Time_Stamp	TIME NOT NULL,
 	F_Date		DATE NOT NULL,
 	F_Length	INTEGER(3) NOT NULL,
 	Airline_Name	VARCHAR(20) NOT NULL,
@@ -74,7 +75,7 @@ CREATE TABLE FlightCrew
 	Emp_ID		INTEGER(4) NOT NULL,
 	Emp_Name	VARCHAR(20) NOT NULL,
 	Job		VARCHAR(20) NOT NULL,
-	FAA_num		INTEGER(4) NOT NULL,
+	FAA_Num		INTEGER(4) NOT NULL,
 	CONSTRAINT pk_flightcrew PRIMARY KEY (Emp_ID)
 );
 
@@ -88,12 +89,12 @@ CREATE TABLE GroundWorkers
 
 CREATE TABLE IncidentReports
 (
-	Emp_Filed	VARCHAR(20) NOT NULL,
-	Emp_Reported	VARCHAR(20) NOT NULL,
-	Inc_Type	VARCHAR(20) NOT NULL,
-	I_Desc		VARCHAR(20) NOT NULL,
-	Date_filed	DATE NOT NULL,
-	CONSTRAINT pk_increports PRIMARY KEY (Emp_Filed,Emp_Reported,Date_filed)
+	Date_Filed		DATE NOT NULL,
+	Filed_ID		INTEGER(4) NOT NULL,
+	Reported_ID		INTEGER(4) NOT NULL,
+	Inc_Type		VARCHAR(20) NOT NULL,
+	Inc_Desc		VARCHAR(20) NOT NULL,
+	CONSTRAINT pk_increports PRIMARY KEY (Date_Filed,Filed_ID,Reported_ID)
 );
 
 ALTER TABLE Airports
@@ -103,8 +104,8 @@ ALTER TABLE Airports
 		  
 ALTER TABLE Flights
 	ADD CONSTRAINT flights_airports_fk
-	FOREIGN KEY (FAA_abbr),
-	REFERENCES Airports (FAA_abbr);
+	FOREIGN KEY (FAA_Abbr),
+	REFERENCES Airports (FAA_Abbr);
 		  
 ALTER TABLE Flights
 	ADD CONSTRAINT flights_airlines_fk
@@ -123,8 +124,8 @@ ALTER TABLE Crew
 	
 ALTER TABLE Crew
 	ADD CONSTRAINT crew_flightcrew_fk
-	FOREIGN KEY (FAA_num),
-	REFERENCES FlightCrew (FAA_num);
+	FOREIGN KEY (FAA_Num),
+	REFERENCES FlightCrew (FAA_Num);
 		  
 INSERT INTO groups VALUES('Paramore','Haley Williams','2004','alternative rock');
 INSERT INTO groups VALUES('Queen','Freddie Mercury','1970','opera rock');
