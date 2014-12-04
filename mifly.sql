@@ -24,6 +24,7 @@ CREATE TABLE Flights
 	F_Date		DATE NOT NULL,
 	F_Length	INTEGER(3) NOT NULL,
 	Airline_Name	VARCHAR(20) NOT NULL,
+	Crew_Num	INTEGER(4) NOT NULL,
 	CONSTRAINT pk_flights PRIMARY KEY (Flight_Num,Dept_Time,Arr_Time,F_Date)
 );
   
@@ -48,9 +49,9 @@ CREATE TABLE Planes
 
 CREATE TABLE Crew
 (
-	Flight_Num	VARCHAR(4) NOT NULL,
+	Crew_Num	INTEGER(3) NOT NULL,
 	Attndt_Qty	INTEGER(3) NOT NULL,
-	CONSTRAINT pk_crew PRIMARY KEY (FAA_Tail)
+	CONSTRAINT pk_crew PRIMARY KEY (Crew_Num)
 );
 
 CREATE TABLE Cost
@@ -58,8 +59,7 @@ CREATE TABLE Cost
 	Flight_Num	VARCHAR(4) NOT NULL,
 	C_Type		VARCHAR(20) NOT NULL,
 	Cost		INTEGER(3) NOT NULL,
-	Check_Bags	BOOLEAN NOT NULL,
-	CONSTRAINT pk_cost PRIMARY KEY (FAA_Tail)
+	CONSTRAINT pk_cost PRIMARY KEY (C_Type)
 );
 
 CREATE TABLE Personnel
@@ -76,6 +76,7 @@ CREATE TABLE FlightCrew
 	Emp_Name	VARCHAR(20) NOT NULL,
 	Job		VARCHAR(20) NOT NULL,
 	FAA_Num		INTEGER(4) NOT NULL,
+	Crew_Num		INTEGER(3) NOT NULL,
 	CONSTRAINT pk_flightcrew PRIMARY KEY (Emp_ID)
 );
 
@@ -103,7 +104,7 @@ ALTER TABLE Airports
 	REFERENCES ServiceArea (Area);
 		  
 ALTER TABLE Flights
-	ADD CONSTRAINT flights_airports_fk
+	ADD CONSTRAINT flights_DEPT+ports_fk
 	FOREIGN KEY (FAA_Abbr),
 	REFERENCES Airports (FAA_Abbr);
 		  
