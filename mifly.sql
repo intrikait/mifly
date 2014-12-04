@@ -91,61 +91,110 @@ CREATE TABLE GroundWorkers
 CREATE TABLE IncidentReports
 (
 	Date_Filed		DATE NOT NULL,
-	Filed_ID		INTEGER(4) NOT NULL,
-	Reported_ID		INTEGER(4) NOT NULL,
+	Filed_FAA		INTEGER(4) NOT NULL,
+	Reported_FAA	INTEGER(4) NOT NULL,
 	Inc_Type		VARCHAR(20) NOT NULL,
 	Inc_Desc		VARCHAR(20) NOT NULL,
-	CONSTRAINT pk_increports PRIMARY KEY (Date_Filed,Filed_ID,Reported_ID)
+	CONSTRAINT pk_increports PRIMARY KEY (Date_Filed,Filed_FAA,Reported_FAA)
 );
 
 ALTER TABLE Airports
 	ADD CONSTRAINT airports_servicearea_fk
 	FOREIGN KEY (Area),
 	REFERENCES ServiceArea (Area);
-		  
-ALTER TABLE Flights
-	ADD CONSTRAINT flights_DEPT+ports_fk
-	FOREIGN KEY (FAA_Abbr),
-	REFERENCES Airports (FAA_Abbr);
-		  
-ALTER TABLE Flights
-	ADD CONSTRAINT flights_airlines_fk
-	FOREIGN KEY (Airline_Name),
-	REFERENCES Airlines (Airline_Name);
 
 ALTER TABLE Planes
 	ADD CONSTRAINT planes_airlines_fk
 	FOREIGN KEY (Airline_Name),
 	REFERENCES Airlines (Airline_Name);
+
+ALTER TABLE Flights
+	ADD CONSTRAINT flights_ARRport_fk
+	FOREIGN KEY (Arr_Port),
+	REFERENCES Airports (FAA_Abbr);
+
+ALTER TABLE Flights
+	ADD CONSTRAINT flights_DEPTport_fk
+	FOREIGN KEY (Dept_Port),
+	REFERENCES Airports (FAA_Abbr);	
+  
+ALTER TABLE Flights
+	ADD CONSTRAINT flights_airlines_fk
+	FOREIGN KEY (Airline_Name),
+	REFERENCES Airlines (Airline_Name);
 	
-ALTER TABLE Crew
-	ADD CONSTRAINT crew_flights_fk
+ALTER TABLE Flights
+	ADD CONSTRAINT flights_crew_fk
+	FOREIGN KEY (Crew_Num),
+	REFERENCES Crew (Crew_Num);
+
+ALTER TABLE Cost
+	ADD CONSTRAINT cost_flights_fk
 	FOREIGN KEY (Flight_Num),
 	REFERENCES Flights (Flight_Num);
+	
+ALTER TABLE GroundWorkers
+	ADD CONSTRAINT ground_workers_fk
+	FOREIGN KEY (Emp_ID),
+	REFERENCES Personnel (Emp_ID);
+	
+ALTER TABLE FlightCrew
+	ADD CONSTRAINT flight_member_fk
+	FOREIGN KEY (Emp_ID),
+	REFERENCES Personnel (Emp_ID);
+
+ALTER TABLE FlightCrew
+	ADD CONSTRAINT flight_crew_fk
+	FOREIGN KEY (Crew_Num),
+	REFERENCES Crew (Crew_Num);
 	
 ALTER TABLE Crew
 	ADD CONSTRAINT crew_flightcrew_fk
 	FOREIGN KEY (FAA_Num),
 	REFERENCES FlightCrew (FAA_Num);
-		  
-INSERT INTO groups VALUES('Paramore','Haley Williams','2004','alternative rock');
-INSERT INTO groups VALUES('Queen','Freddie Mercury','1970','opera rock');
-INSERT INTO groups VALUES('Simple Plan','Pierre Bouvier','1999','rock');
-INSERT INTO groups VALUES('Relient K','Matt Thiessen','1998','alternative rock');
-INSERT INTO groups VALUES('Weezer','Rivers Cuomo','1992','indie rock');
+	
+ALTER TABLE IncidentReports
+	ADD CONSTRAINT filed_incr_fk
+	FOREIGN KEY (Filed_FAA),
+	REFERENCES FlightCrew (FAA_Num);
 
-INSERT INTO albums VALUES('Riot!','Paramore','Atlantic Records','06-12-2007','38:58',11);
-INSERT INTO albums VALUES('Queen','Queen','Atlantic Records','07-13-1973','38:36',10);
-INSERT INTO albums VALUES('Flash Gordon','Queen','Republic Records','12-08-1981','35:01',18);
-INSERT INTO albums VALUES('Simple Plan','Simple Plan','Atlantic Records','02-12-1008','43:33',11);
-INSERT INTO albums VALUES('Still Not Getting Any...','Simple Plan','Lava Records','10-26-2004','44:27',12);
-INSERT INTO albums VALUES('Two Lefts Dont Make a Right','Relient K','Lava Records','03-11-2003','59:34',15);
-INSERT INTO albums VALUES('Mmhmm','Relient K','Capitol Records','11-02-2004','50:22',14);
-INSERT INTO albums VALUES('Five Score and Seven Years Ago','Relient K','Capitol Records','03-06-2007','51:12',14);
-INSERT INTO albums VALUES('Wheezer','Wheezer','Republic Records','06-03-2008','41:23',10);
-INSERT INTO albums VALUES('Everything Will Be Alright in the End','Wheezer','Republic Records','10-07-2014','42:24',13);
+ALTER TABLE IncidentReports
+	ADD CONSTRAINT reported_incr_fk
+	FOREIGN KEY (Reported_FAA),
+	REFERENCES FlightCrew (FAA_Num);	
 
-INSERT INTO studios VALUES('Atlantic Records','3400 W Olive Ave, Burbank, CA','Warner Bros','818-238-2200');
-INSERT INTO studios VALUES('Lava Records','3400 W Olive Ave, Burbank, CA','Jason Flom','818-238-6900');
-INSERT INTO studios VALUES('Capitol Records','1750 Vine St, Los Angeles, CA','Johnny Mercer','323-462-6252');
-INSERT INTO studios VALUES('Republic Records','1755 Broadway, New York, NY','Monte Lipman','212-841-5100');
+INSERT INTO Service VALUES('Los Angeles');
+INSERT INTO Service VALUES('New York');
+INSERT INTO Service VALUES('Dallas');
+
+INSERT INTO Airports VALUES('LAX','Los Angeles Airport','Los Angeles','Los Angeles');
+INSERT INTO Airports VALUES('JFK','John F. Kennedy Airport',' New York','Newark');
+INSERT INTO Airports VALUES('LBX','Long Beach Airport','Los Angeles','Long Beach');
+
+INESRT INTO Flights VALUES('5001,'JFK','LAX','12:00','2014-1-31','180','Virgin America','3001');
+
+INSERT INTO Airlines VALUES('Virgin America','Los Angeles','Domestic');
+INSERT INTO Airlines VALUES('Jet Blue','Long Beach','Local');
+INSERT INTO Airlines VALUES('Delta','Long Beach','Local');
+INSERT INTO Airlines VALUES('Philippine Airlines','Manila','International');
+
+INSERT INTO Planes VALUES('
+
+INSERT INTO Crew VALUES('
+
+INSERT INTO Cost VALUES('
+
+INSERT INTO Personnel VALUES('0001','Bob Smith','Flight Crew');
+INSERT INTO Personnel VALUES('0002','Adam McDonald','Ground Worker');
+INSERT INTO Personnel VALUES('0003','Caitlyn King','Ground Worker');
+INSERT INTO Personnel VALUES('0004','Doug Damon','Flight Crew');
+INSERT INTO Personnel VALUES('0005','Elise Letterman','Flight Crew);
+INSERT INTO Personnel VALUES('0006','Mike Roo','Flight Crew');
+
+INSERT INTO Ground Workers VALUES('0002','Adam McDonald','Flight Director');
+INSERT INTO Ground Workers VALUES('0003','Caitlyn King','Security');
+
+INSERT INTO FlightCrew VALUES('0001','Bob Smith','Pilot','1001','2001');
+INSERT INTO FlightCrew VALUES('0004','Doug Damon','Attendent','1002','2002');
+
+INSERT INTO IncidentReports('2014-01-31','0001','0001','Recognition','Good Employee.');
