@@ -1,0 +1,39 @@
+git add *
+git commit jaslkdfj.sql -m 'added inserts'
+git push origin master
+
+INSERT INTO Service VALUES('Los Angeles');
+INSERT INTO Service VALUES('New York');
+INSERT INTO Service VALUES('Dallas');
+
+INSERT INTO Airports VALUES('LAX','Los Angeles Airport','Los Angeles','Los Angeles');
+INSERT INTO Airports VALUES('JFK','John F. Kennedy Airport',' New York','Newark');
+INSERT INTO Airports VALUES('LBX','Long Beach Airport','Los Angeles','Long Beach');
+
+INESRT INTO Flights VALUES('5001,'JFK','LAX','12:00','2014-1-31','180','Virgin America','3001');
+
+INSERT INTO Airlines VALUES('Virgin America','Los Angeles','Domestic');
+INSERT INTO Airlines VALUES('Jet Blue','Long Beach','Local');
+INSERT INTO Airlines VALUES('Delta','Long Beach','Local');
+INSERT INTO Airlines VALUES('Philippine Airlines','Manila','International');
+
+INSERT INTO Planes VALUES('
+
+INSERT INTO Crew VALUES('
+
+INSERT INTO Cost VALUES('
+
+INSERT INTO Personnel VALUES('0001','Bob Smith','Flight Crew');
+INSERT INTO Personnel VALUES('0002','Adam McDonald','Ground Worker');
+INSERT INTO Personnel VALUES('0003','Caitlyn King','Ground Worker');
+INSERT INTO Personnel VALUES('0004','Doug Damon','Flight Crew');
+INSERT INTO Personnel VALUES('0005','Elise Letterman','Flight Crew);
+INSERT INTO Personnel VALUES('0006','Mike Roo','Flight Crew');
+
+INSERT INTO Ground Workers VALUES('0002','Adam McDonald','Flight Director');
+INSERT INTO Ground Workers VALUES('0003','Caitlyn King','Security');
+
+INSERT INTO FlightCrew VALUES('0001','Bob Smith','Pilot','1001','2001');
+INSERT INTO FlightCrew VALUES('0004','Doug Damon','Attendent','1002','2002');
+
+INSERT INTO IncidentReports('2014-01-31','0001','0001','Recognition','Good Employee.');
