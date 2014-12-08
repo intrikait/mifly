@@ -20,18 +20,20 @@ CREATE TABLE Flights
 	Flight_Num	INTEGER(3) NOT NULL,
 	Arr_Port	VARCHAR(3) NOT NULL,
 	Dept_Port	VARCHAR(3) NOT NULL,
-	Time_Stamp	VARCHAR(7) NOT NULL,
+	Arr_Time	VARCHAR(7) NOT NULL,
+	Dept_Time	VARCHAR(7) NOT NULL,
 	F_Date		DATE NOT NULL,
 	F_Length	INTEGER(3) NOT NULL,
 	Airline_Name	VARCHAR(20) NOT NULL,
-	Crew_Num	INTEGER(4) NOT NULL,
+	Crew_Num	INTEGER(3) NOT NULL,
 	CONSTRAINT pk_flights PRIMARY KEY (Flight_Num,Dept_Time,Arr_Time,F_Date)
 );
   
 CREATE TABLE Airlines
 (
 	Airline_Name	VARCHAR(20) NOT NULL,
-	City		VARCHAR(20) NOT NULL,
+	Location		VARCHAR(20) NOT NULL,
+	Port_Name	VARCHAR(20) NOT NULL,
 	Fly_Type	VARCHAR(20) NOT NULL,
 	CONSTRAINT pk_airlines PRIMARY KEY (Airline_Name)
 );
@@ -41,7 +43,7 @@ CREATE TABLE Planes
 	Airline_Name VARCHAR(20) NOT NULL,
 	FAA_Tail	VARCHAR(6) NOT NULL,
 	Manufacturer	VARCHAR(20) NOT NULL,
-	Model_Num	VARCHAR(20) NOT NULL,
+	Model_Num	INTEGER(3) NOT NULL,
 	Num_Pssgrs	INTEGER(3) NOT NULL,
 	Plane_Name	VARCHAR(20),
 	CONSTRAINT pk_planes PRIMARY KEY (FAA_Tail)
@@ -49,8 +51,8 @@ CREATE TABLE Planes
 
 CREATE TABLE Crew
 (
-	Crew_Num	INTEGER(4) NOT NULL,
-	Attndt_Qty	INTEGER(3) NOT NULL,
+	Crew_Num	INTEGER(3) NOT NULL,
+	Attndt_Qty	INTEGER(1) NOT NULL,
 	CONSTRAINT pk_crew PRIMARY KEY (Crew_Num)
 );
 
@@ -58,7 +60,7 @@ CREATE TABLE Cost
 (
 	Flight_Num	INTEGER(3) NOT NULL,
 	C_Type		VARCHAR(20) NOT NULL,
-	Cost		INTEGER(3) NOT NULL,
+	Cost		DECIMAL(3,2) NOT NULL,
 	CONSTRAINT pk_cost PRIMARY KEY (C_Type)
 );
 
@@ -75,7 +77,7 @@ CREATE TABLE FlightCrew
 	Emp_ID		INTEGER(4) NOT NULL,
 	Emp_Name	VARCHAR(20) NOT NULL,
 	Job		VARCHAR(20) NOT NULL,
-	FAA_Num		INTEGER(4) NOT NULL,
+	FAA_Num		VARCHAR(4) NOT NULL,
 	Crew_Num		INTEGER(3) NOT NULL,
 	CONSTRAINT pk_flightcrew PRIMARY KEY (Emp_ID)
 );
@@ -90,11 +92,11 @@ CREATE TABLE GroundWorkers
 
 CREATE TABLE IncidentReports
 (
-	Date_Filed		DATE NOT NULL,
-	Filed_FAA		INTEGER(4) NOT NULL,
-	Reported_FAA	INTEGER(4) NOT NULL,
+	Flight_Num	INTEGER(3) NOT NULL,
+	Filed_FAA		VARCHAR(4) NOT NULL,
+	Reported_FAA	VARCHAR(4) NOT NULL,
 	Inc_Type		VARCHAR(20) NOT NULL,
-	Inc_Desc		VARCHAR(20) NOT NULL,
+	Inc_Desc		VARCHAR(30) NOT NULL,
 	CONSTRAINT pk_increports PRIMARY KEY (Date_Filed,Filed_FAA,Reported_FAA)
 );
 
@@ -161,5 +163,10 @@ ALTER TABLE IncidentReports
 ALTER TABLE IncidentReports
 	ADD CONSTRAINT reported_incr_fk
 	FOREIGN KEY (Reported_FAA),
-	REFERENCES FlightCrew (FAA_Num);	
+	REFERENCES FlightCrew (FAA_Num);
+
+ALTER TABLE IncidentReports
+	ADD CONSTRAINT flight_incr_fk
+	FOREIGN KEY (Flight_Num),
+	REFERENCES Flights (Flight_Num);	
 

@@ -1,7 +1,8 @@
+/*
 git add *
 git commit jaslkdfj.sql -m 'added inserts'
 git push origin master
-
+*/
 
 INSERT INTO ServiceArea VALUES('Los Angeles');
 INSERT INTO ServiceArea VALUES('New York');
@@ -19,51 +20,127 @@ INSERT INTO Airports VALUES('ONT','Ontario Airport','Los Angeles','Ontario');
 INSERT INTO Airports VALUES('CRK','Clark International','Manila','Pampanga');
 INSERT INTO Airports VALUES('SEA','Seattle-Tacoma International','Seattle','Seattle');
 
-INSERT INTO Flights VALUES(194,'JFK','LAX','10:00PM','2014-1-31',180,'Virgin America',1245);
-INSERT INTO Flights VALUES(194,'LAX','JFK','2:00AM','2014-1-31',180,'Virgin America',1245);
-INSERT INTO Flights VALUES(138,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(290,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(679,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(270,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(396,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(699,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(174,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(600,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(294,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(283,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(120,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
-INSERT INTO Flights VALUES(395,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(194,'JFK','LAX','8:00AM','1:30PM','2014-12-17',300,'Jet Blue',369);
+INSERT INTO Flights VALUES(699,'ONT','LGA','4:00PM','8:00PM','2014-12-17',240,'Jet Blue',369);
+INSERT INTO Flights VALUES(290,'LBX','SEA','6:00AM','8:00AM','2014-12-25',120,'SouthWest Airlines',414);
+INSERT INTO Flights VALUES(138,'SEA','NRT','9:30AM','11:30PM','2014-12-25',870,'Air Japan',414);
+INSERT INTO Flights VALUES(152,'NRT','CRK','12:00AM','1:30AM','2014-12-26',90,'Philippine Airlines',557);
+INSERT INTO Flights VALUES(174,'MNL','CRK','5:30PM','6:00PM','2015-01-11',30,'Philippine Airlines',557);
+INSERT INTO Flights VALUES(120,'LGA','SEA','2:30PM','4:00PM','2015-01-11',210,'American Airlines',369);
+INSERT INTO Flights VALUES(395,'LAX','SEA','3:00PM','4:00PM','2015-01-11',180,'SouthWest Airlines',414);
 
-INSERT INTO Airlines VALUES('Virgin America','Los Angeles','Domestic');
-INSERT INTO Airlines VALUES('Jet Blue','Long Beach','International');
-INSERT INTO Airlines VALUES('Delta Airlines','Long Beach','Local');
+INSERT INTO Airlines VALUES('American Airlines','Los Angeles','Domestic');
+INSERT INTO Airlines VALUES('Jet Blue','New York','Domestic');
+INSERT INTO Airlines VALUES('SouthWest Airlines','Dallas','Local');
 INSERT INTO Airlines VALUES('Philippine Airlines','Manila','International');
+INSERT INTO Airlines VALUES('Air Japan','Tokyo','International');
 
-INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'Hawkeye');
-INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'Flash');
-INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'');
-INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'Captain');
-INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'Superman');
-INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'');
+INSERT INTO Planes VALUES('Jet Blue','B135JB','Boeing','767',285,'Flash');
+INSERT INTO Planes VALUES('American Airlines','A692AA','Arrow','777',420,'');
+INSERT INTO Planes VALUES('SouthWest Airlines','B782SW','Boeing','747',500,'Black Widow');
+INSERT INTO Planes VALUES('Philippine Airlines','B546PI','Boeing','747',605,'');
 
-INSERT INTO Crew VALUES(3001,4);
-INSERT INTO Crew VALUES(1245,5);
-INSERT INTO Crew VALUES(4913,3);
-INSERT INTO Crew VALUES(2394,5);
+INSERT INTO Crew VALUES(369,3);
+INSERT INTO Crew VALUES(414,4);
+INSERT INTO Crew VALUES(557,5);
 
-INSERT INTO Cost VALUES(
+INSERT INTO Cost VALUES(194,'Bag Check',5.95);
+INSERT INTO Cost VALUES(699,'Bag Check',3.45);
+INSERT INTO Cost VALUES(152,'Bag Check',9.42);
+INSERT INTO Cost VALUES(395,'Bag Check',2.78);
+INSERT INTO Cost VALUES(138,'Bag Check',3.37);
+INSERT INTO Cost VALUES(290,'Water',2.50);
+INSERT INTO Cost VALUES(138,'Water',1.05);
+INSERT INTO Cost VALUES(395,'Water',2.55);
+INSERT INTO Cost VALUES(174,'Water',1.75);
+INSERT INTO Cost VALUES(152,'Water',3.00);
+INSERT INTO Cost VALUES(120,'Water',2.29);
+INSERT INTO Cost VALUES(138,'Blankets',9.62);
+INSERT INTO Cost VALUES(174,'Blankets',5.45);
+INSERT INTO Cost VALUES(290,'Blankets',6.13);
+INSERT INTO Cost VALUES(194,'Blankets',7.25);
+INSERT INTO Cost VALUES(395,'Pillows',2.12);
+INSERT INTO Cost VALUES(699,'Pillows',1.59);
+INSERT INTO Cost VALUES(120,'Pillows',4.59);
 
-INSERT INTO Personnel VALUES('0001','Bob Smith','Flight Crew');
-INSERT INTO Personnel VALUES('0002','Adam McDonald','Ground Worker');
-INSERT INTO Personnel VALUES('0003','Caitlyn King','Ground Worker');
-INSERT INTO Personnel VALUES('0004','Doug Damon','Flight Crew');
-INSERT INTO Personnel VALUES('0005','Elise Letterman','Flight Crew);
-INSERT INTO Personnel VALUES('0006','Mike Roo','Flight Crew');
+INSERT INTO Personnel VALUES(3691,'Barry Allen','Flight Crew');
+INSERT INTO Personnel VALUES(3692,'Diana Prince','Flight Crew');
+INSERT INTO Personnel VALUES(3693,'Dinah Lance','Flight Crew');
+INSERT INTO Personnel VALUES(3694,'Oliver Queen','Flight Crew');
+INSERT INTO Personnel VALUES(3695,'Bruce Wayne','Flight Crew');
+INSERT INTO Personnel VALUES(3696,'Jonn Jonzz','Flight Crew');
+INSERT INTO Personnel VALUES(4141,'Steve Rogers','Flight Crew');
+INSERT INTO Personnel VALUES(4142,'Clint Barton','Flight Crew');
+INSERT INTO Personnel VALUES(4143,'Natasha Romanov','Flight Crew');
+INSERT INTO Personnel VALUES(4148,'Thor Odinson','Flight Crew');
+INSERT INTO Personnel VALUES(4149,'Loki Laufeyson','Flight Crew');
+INSERT INTO Personnel VALUES(4144,'Pietro Maximoff','Flight Crew');
+INSERT INTO Personnel VALUES(4145,'Maria Hill','Flight Crew');
+INSERT INTO Personnel VALUES(5571,'Richard Grayson','Flight Crew');
+INSERT INTO Personnel VALUES(5572,'Wally West','Flight Crew');
+INSERT INTO Personnel VALUES(5573,'Connor Kent','Flight Crew');
+INSERT INTO Personnel VALUES(5574,'Mgann Morzz','Flight Crew');
+INSERT INTO Personnel VALUES(5575,'Artemis Crock','Flight Crew');
+INSERT INTO Personnel VALUES(5576,'Kaldur Ahm','Flight Crew');
+INSERT INTO Personnel VALUES(5577,'Zatanna Zatara','Flight Crew');
+INSERT INTO Personnel VALUES(5578,'Roy Harper','Flight Crew');
+INSERT INTO Personnel VALUES(2004,'Tony Stark','Ground Worker');
+INSERT INTO Personnel VALUES(2005,'Bruce Banner','Ground Worker');
+INSERT INTO Personnel VALUES(2006,'Nicholas Fury','Ground Worker');
+INSERT INTO Personnel VALUES(2007,'Bucky Barnes','Ground Worker');
+INSERT INTO Personnel VALUES(2010,'Clark Kent','Ground Worker');
+INSERT INTO Personnel VALUES(2011,'Peter Parker','Ground Worker');
 
-INSERT INTO Ground Workers VALUES('0002','Adam McDonald','Flight Director');
-INSERT INTO Ground Workers VALUES('0003','Caitlyn King','Security');
+INSERT INTO FlightCrew VALUES(3692,'Diana Prince','Captain','F032',369);
+INSERT INTO FlightCrew VALUES(3691,'Barry Allen','Navigator','F031',369);
+INSERT INTO FlightCrew VALUES(3696,'Jonn Jonzz','Co-Pilot','F036',369);
+INSERT INTO FlightCrew VALUES(3693,'Dinah Lance','Attendant','F033',369);
+INSERT INTO FlightCrew VALUES(3695,'Bruce Wayne','Attendant','F035',369);
+INSERT INTO FlightCrew VALUES(3694,'Oliver Queen','Attendant','F034',369);
 
-INSERT INTO FlightCrew VALUES('0001','Bob Smith','Pilot','1001','2001');
-INSERT INTO FlightCrew VALUES('0004','Doug Damon','Attendent','1002','2002');
+INSERT INTO FlightCrew VALUES(4141,'Steve Rogers','Captain','F041',414);
+INSERT INTO FlightCrew VALUES(4149,'Loki Laufeyson','Co-Pilot','F049',414);
+INSERT INTO FlightCrew VALUES(4142,'Clint Barton','Navigator','F042',414);
+INSERT INTO FlightCrew VALUES(4143,'Natasha Romanov','Attendant','F043',414);
+INSERT INTO FlightCrew VALUES(4148,'Thor Odinson','Attendant','F048',414);
+INSERT INTO FlightCrew VALUES(4145,'Maria Hill','Attendant','F045',414);
+INSERT INTO FlightCrew VALUES(4144,'Pietro Maximoff','Attendant','F044',414);
 
-INSERT INTO IncidentReports('2014-01-31','0001','0001','Recognition','Good Employee.');
+INSERT INTO FlightCrew VALUES(5576,'Kaldur Ahm','Captain','F056',557);
+INSERT INTO FlightCrew VALUES(5571,'Richard Grayson','Co-Pilot','F051',557);
+INSERT INTO FlightCrew VALUES(5574,'Mgann Morzz','Navigator','F054',557);
+INSERT INTO FlightCrew VALUES(5572,'Wally West','Attendant','F052',557);
+INSERT INTO FlightCrew VALUES(5573,'Connor Kent','Attendant','F053',557);
+INSERT INTO FlightCrew VALUES(5575,'Artemis Crock','Attendant','F055',557);
+INSERT INTO FlightCrew VALUES(5577,'Zatanna Zatara','Attendant','F057',557);
+INSERT INTO FlightCrew VALUES(5578,'Roy Harper','Attendant','F058',557);
+
+INSERT INTO GroundWorkers VALUES(2004,'Tony Stark','Airplane Mechanic');
+INSERT INTO GroundWorkers VALUES(2005,'Bruce Banner','Sr Researcher');
+INSERT INTO GroundWorkers VALUES(2006,'Nicholas Fury','Flight Director');
+INSERT INTO GroundWorkers VALUES(2007,'Bucky Barnes','Janitor');
+INSERT INTO GroundWorkers VALUES(2010,'Clark Kent','Report Analyst');
+INSERT INTO GroundWorkers VALUES(2011,'Peter Parker','Asst Researcher');
+
+INSERT INTO IncidentReports(194,'F033','F034','Complaint','Back-sassing attitude.'); /*Dinah reports Oliver*/
+INSERT INTO IncidentReports(699,'F036','F031','Recognition','Quick thinking.'); /*Jonn on Barry*/
+INSERT INTO IncidentReports(699,'F032','F136','Recognition','Great co-pilot.'); /*Diana on Jonn*/
+INSERT INTO IncidentReports(194,'F035','F032','Recognition','Gracious captain.'); /*Bruce on Diana*/
+
+INSERT INTO IncidentReports(290,'F043','F049','Problem','Conflicting resolution.'); /*Natasha on Loki*/
+INSERT INTO IncidentReports(290,'F048','F049','Recognition','Gracious captain.'); /*Thor on Loki*/
+INSERT INTO IncidentReports(290,'F045','F044','Concern','Not careful.'); /*Maria on Pietro*/
+INSERT INTO IncidentReports(138,'F049','F048','Complaint','Harrassment.'); /*Loki on Thor*/
+INSERT INTO IncidentReports(138,'F042','F043','Complaint','Bossy and mean.'); /*Barton on Natasha*/
+INSERT INTO IncidentReports(138,'F043','F042','Complaint','Lazy.'); /*Natasha on Barton*/
+INSERT INTO IncidentReports(138,'F048','F041','Recognition','Noble leader.'); /*Thor on Captain*/
+INSERT INTO IncidentReports(138,'F045','F041','Recognition','Stupendous captain.'); /*Maria on Captain*/
+
+INSERT INTO IncidentReports(152,'F057','F032','Recognition','Gracious captain.'); /*Zatanna on Artemis*/
+INSERT INTO IncidentReports(152,'F035','F032','Recognition','Gracious captain.'); /*Wally on Kaldur*/
+INSERT INTO IncidentReports(152,'F035','F032','Complaint','Gracious captain.'); /*Connor on Mgann*/
+INSERT INTO IncidentReports(152,'F035','F032','Concern','Gracious captain.'); /*Mgann on Connor*/
+INSERT INTO IncidentReports(152,'F035','F032','Concern','Gracious captain.'); /*Wally on Artemis*/
+INSERT INTO IncidentReports(174,'F035','F032','Complaint','Gracious captain.'); /*Artemis on Wally*/
+INSERT INTO IncidentReports(174,'F035','F032','Problem','Gracious captain.'); /*Richard on Kaldur*/
+INSERT INTO IncidentReports(152,'F035','F032','Recognition','Gracious captain.'); /*Kaldur on Richard*/
