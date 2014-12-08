@@ -2,7 +2,7 @@ connect 'jdbc:derby:mifly;create=true';
 
 CREATE TABLE ServiceArea
 (
-	Area		VARCHAR(20) NOT NULL,
+	Area		VARCHAR(15) NOT NULL,
 	CONSTRAINT pk_servicearea PRIMARY KEY (Area)
 );
 
@@ -17,10 +17,10 @@ CREATE TABLE Airports
   
 CREATE TABLE Flights
 (
-	Flight_Num	VARCHAR(4) NOT NULL,
+	Flight_Num	INTEGER(3) NOT NULL,
 	Arr_Port	VARCHAR(3) NOT NULL,
 	Dept_Port	VARCHAR(3) NOT NULL,
-	Time_Stamp	TIME NOT NULL,
+	Time_Stamp	VARCHAR(7) NOT NULL,
 	F_Date		DATE NOT NULL,
 	F_Length	INTEGER(3) NOT NULL,
 	Airline_Name	VARCHAR(20) NOT NULL,
@@ -39,24 +39,24 @@ CREATE TABLE Airlines
 CREATE TABLE Planes
 (
 	Airline_Name VARCHAR(20) NOT NULL,
-	FAA_Tail	VARCHAR(20) NOT NULL,
+	FAA_Tail	VARCHAR(6) NOT NULL,
 	Manufacturer	VARCHAR(20) NOT NULL,
 	Model_Num	VARCHAR(20) NOT NULL,
-	Num_Pssgrs	VARCHAR(20) NOT NULL,
+	Num_Pssgrs	INTEGER(3) NOT NULL,
 	Plane_Name	VARCHAR(20),
 	CONSTRAINT pk_planes PRIMARY KEY (FAA_Tail)
 );
 
 CREATE TABLE Crew
 (
-	Crew_Num	INTEGER(3) NOT NULL,
+	Crew_Num	INTEGER(4) NOT NULL,
 	Attndt_Qty	INTEGER(3) NOT NULL,
 	CONSTRAINT pk_crew PRIMARY KEY (Crew_Num)
 );
 
 CREATE TABLE Cost
 (
-	Flight_Num	VARCHAR(4) NOT NULL,
+	Flight_Num	INTEGER(3) NOT NULL,
 	C_Type		VARCHAR(20) NOT NULL,
 	Cost		INTEGER(3) NOT NULL,
 	CONSTRAINT pk_cost PRIMARY KEY (C_Type)
@@ -163,38 +163,3 @@ ALTER TABLE IncidentReports
 	FOREIGN KEY (Reported_FAA),
 	REFERENCES FlightCrew (FAA_Num);	
 
-INSERT INTO Service VALUES('Los Angeles');
-INSERT INTO Service VALUES('New York');
-INSERT INTO Service VALUES('Dallas');
-
-INSERT INTO Airports VALUES('LAX','Los Angeles Airport','Los Angeles','Los Angeles');
-INSERT INTO Airports VALUES('JFK','John F. Kennedy Airport',' New York','Newark');
-INSERT INTO Airports VALUES('LBX','Long Beach Airport','Los Angeles','Long Beach');
-
-INESRT INTO Flights VALUES('5001,'JFK','LAX','12:00','2014-1-31','180','Virgin America','3001');
-
-INSERT INTO Airlines VALUES('Virgin America','Los Angeles','Domestic');
-INSERT INTO Airlines VALUES('Jet Blue','Long Beach','Local');
-INSERT INTO Airlines VALUES('Delta','Long Beach','Local');
-INSERT INTO Airlines VALUES('Philippine Airlines','Manila','International');
-
-INSERT INTO Planes VALUES('
-
-INSERT INTO Crew VALUES('
-
-INSERT INTO Cost VALUES('
-
-INSERT INTO Personnel VALUES('0001','Bob Smith','Flight Crew');
-INSERT INTO Personnel VALUES('0002','Adam McDonald','Ground Worker');
-INSERT INTO Personnel VALUES('0003','Caitlyn King','Ground Worker');
-INSERT INTO Personnel VALUES('0004','Doug Damon','Flight Crew');
-INSERT INTO Personnel VALUES('0005','Elise Letterman','Flight Crew);
-INSERT INTO Personnel VALUES('0006','Mike Roo','Flight Crew');
-
-INSERT INTO Ground Workers VALUES('0002','Adam McDonald','Flight Director');
-INSERT INTO Ground Workers VALUES('0003','Caitlyn King','Security');
-
-INSERT INTO FlightCrew VALUES('0001','Bob Smith','Pilot','1001','2001');
-INSERT INTO FlightCrew VALUES('0004','Doug Damon','Attendent','1002','2002');
-
-INSERT INTO IncidentReports('2014-01-31','0001','0001','Recognition','Good Employee.');
