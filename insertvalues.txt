@@ -2,26 +2,56 @@ git add *
 git commit jaslkdfj.sql -m 'added inserts'
 git push origin master
 
-INSERT INTO Service VALUES('Los Angeles');
-INSERT INTO Service VALUES('New York');
-INSERT INTO Service VALUES('Dallas');
+
+INSERT INTO ServiceArea VALUES('Los Angeles');
+INSERT INTO ServiceArea VALUES('New York');
+INSERT INTO ServiceArea VALUES('Manila');
+INSERT INTO ServiceArea VALUES('Seattle');
+INSERT INTO ServiceArea VALUES('Tokyo');
 
 INSERT INTO Airports VALUES('LAX','Los Angeles Airport','Los Angeles','Los Angeles');
 INSERT INTO Airports VALUES('JFK','John F. Kennedy Airport',' New York','Newark');
 INSERT INTO Airports VALUES('LBX','Long Beach Airport','Los Angeles','Long Beach');
+INSERT INTO Airports VALUES('NRT','Narita International','Tokyo','Narita');
+INSERT INTO Airports VALUES('LGA','LaGuardia Airport',' New York','LaGuardia');
+INSERT INTO Airports VALUES('MNL','Ninoy Aquino International','Manila','Manila');
+INSERT INTO Airports VALUES('ONT','Ontario Airport','Los Angeles','Ontario');
+INSERT INTO Airports VALUES('CRK','Clark International','Manila','Pampanga');
+INSERT INTO Airports VALUES('SEA','Seattle-Tacoma International','Seattle','Seattle');
 
-INESRT INTO Flights VALUES('5001,'JFK','LAX','12:00','2014-1-31','180','Virgin America','3001');
+INSERT INTO Flights VALUES(194,'JFK','LAX','10:00PM','2014-1-31',180,'Virgin America',1245);
+INSERT INTO Flights VALUES(194,'LAX','JFK','2:00AM','2014-1-31',180,'Virgin America',1245);
+INSERT INTO Flights VALUES(138,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(290,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(679,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(270,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(396,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(699,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(174,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(600,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(294,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(283,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(120,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
+INSERT INTO Flights VALUES(395,'JFK','LAX','12:00AM','2014-1-31',180,'Virgin America',3001);
 
 INSERT INTO Airlines VALUES('Virgin America','Los Angeles','Domestic');
-INSERT INTO Airlines VALUES('Jet Blue','Long Beach','Local');
-INSERT INTO Airlines VALUES('Delta','Long Beach','Local');
+INSERT INTO Airlines VALUES('Jet Blue','Long Beach','International');
+INSERT INTO Airlines VALUES('Delta Airlines','Long Beach','Local');
 INSERT INTO Airlines VALUES('Philippine Airlines','Manila','International');
 
-INSERT INTO Planes VALUES('
+INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'Hawkeye');
+INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'Flash');
+INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'');
+INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'Captain');
+INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'Superman');
+INSERT INTO Planes VALUES('Jet Blue','N123JB','Boeing','747',500,'');
 
-INSERT INTO Crew VALUES('
+INSERT INTO Crew VALUES(3001,4);
+INSERT INTO Crew VALUES(1245,5);
+INSERT INTO Crew VALUES(4913,3);
+INSERT INTO Crew VALUES(2394,5);
 
-INSERT INTO Cost VALUES('
+INSERT INTO Cost VALUES(
 
 INSERT INTO Personnel VALUES('0001','Bob Smith','Flight Crew');
 INSERT INTO Personnel VALUES('0002','Adam McDonald','Ground Worker');
