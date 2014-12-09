@@ -26,7 +26,7 @@ CREATE TABLE Flights
 	F_Length	INTEGER NOT NULL,
 	Airline_Name	VARCHAR(20) NOT NULL,
 	Crew_Num	INTEGER NOT NULL,
-	CONSTRAINT pk_flights PRIMARY KEY (Flight_Num,Dept_Time,Arr_Time,F_Date)
+	CONSTRAINT pk_flights PRIMARY KEY (Flight_Num)
 );
   
 CREATE TABLE Airlines
@@ -93,7 +93,7 @@ CREATE TABLE GroundWorkers
 CREATE TABLE IncidentReports
 (
 	Flight_Num	INTEGER NOT NULL,
-	Filed_FAA		VARCHAR(4) NOT NULL,
+	Filed_FAA	VARCHAR(4) NOT NULL,
 	Reported_FAA	VARCHAR(4) NOT NULL,
 	Inc_Type		VARCHAR(20) NOT NULL,
 	Inc_Desc		VARCHAR(30) NOT NULL,
@@ -133,7 +133,7 @@ ALTER TABLE Flights
 ALTER TABLE Cost
 	ADD CONSTRAINT cost_flights_fk
 	FOREIGN KEY (Flight_Num)
-	REFERENCES Flights (Flight_Num);//Constraint 'COST_FLIGHTS_FK' is invalid: there is no unique or primary key constraint on table '"APP"."FLIGHTS"' that matches the number and types of the columns in the foreign key.
+	REFERENCES Flights (Flight_Num);
 	
 ALTER TABLE GroundWorkers
 	ADD CONSTRAINT ground_workers_fk
@@ -150,11 +150,6 @@ ALTER TABLE FlightCrew
 	FOREIGN KEY (Crew_Num)
 	REFERENCES Crew (Crew_Num);
 	
-ALTER TABLE Crew
-	ADD CONSTRAINT crew_flightcrew_fk
-	FOREIGN KEY (FAA_Num)
-	REFERENCES FlightCrew (FAA_Num);//'FAA_NUM' is not a column in table or VTI 'CREW'.
-	
 ALTER TABLE IncidentReports
 	ADD CONSTRAINT filed_incr_fk
 	FOREIGN KEY (Filed_FAA)
@@ -168,7 +163,7 @@ ALTER TABLE IncidentReports
 ALTER TABLE IncidentReports
 	ADD CONSTRAINT flight_incr_fk
 	FOREIGN KEY (Flight_Num)
-	REFERENCES Flights (Flight_Num);//Constraint 'FLIGHT_INCR_FK' is invalid: there is no unique or primary key constraint on table '"APP"."FLIGHTS"' that matches the number and types of the columns in the foreign key.	
+	REFERENCES Flights (Flight_Num);
 
 INSERT INTO ServiceArea VALUES('Los Angeles');
 INSERT INTO ServiceArea VALUES('New York');
