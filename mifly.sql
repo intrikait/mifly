@@ -79,7 +79,7 @@ CREATE TABLE FlightCrew
 	Job		VARCHAR(20) NOT NULL,
 	FAA_Num		VARCHAR(4) NOT NULL,
 	Crew_Num		INTEGER NOT NULL,
-	CONSTRAINT pk_flightcrew PRIMARY KEY (Emp_ID)
+	CONSTRAINT pk_flightcrew PRIMARY KEY (FAA_Num)
 );
 
 CREATE TABLE GroundWorkers
