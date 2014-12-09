@@ -103,72 +103,72 @@ CREATE TABLE IncidentReports
 ALTER TABLE Airports
 	ADD CONSTRAINT airports_servicearea_fk
 	FOREIGN KEY (Area)
-	REFERENCES ServiceArea(Area);
+	REFERENCES ServiceArea(Area);//Constraint 'AIRPORTS_SERVICEAREA_FK' is invalid: there is no unique or primary key constraint on table '"APP"."SERVICEAREA"' that matches the number and types of the columns in the foreign key.
 
 ALTER TABLE Planes
 	ADD CONSTRAINT planes_airlines_fk
-	FOREIGN KEY (Airline_Name),
+	FOREIGN KEY (Airline_Name)
 	REFERENCES Airlines (Airline_Name);
 
 ALTER TABLE Flights
 	ADD CONSTRAINT flights_ARRport_fk
-	FOREIGN KEY (Arr_Port),
+	FOREIGN KEY (Arr_Port)
 	REFERENCES Airports (FAA_Abbr);
 
 ALTER TABLE Flights
 	ADD CONSTRAINT flights_DEPTport_fk
-	FOREIGN KEY (Dept_Port),
+	FOREIGN KEY (Dept_Port)
 	REFERENCES Airports (FAA_Abbr);	
   
 ALTER TABLE Flights
 	ADD CONSTRAINT flights_airlines_fk
-	FOREIGN KEY (Airline_Name),
+	FOREIGN KEY (Airline_Name)
 	REFERENCES Airlines (Airline_Name);
 	
 ALTER TABLE Flights
 	ADD CONSTRAINT flights_crew_fk
-	FOREIGN KEY (Crew_Num),
+	FOREIGN KEY (Crew_Num)
 	REFERENCES Crew (Crew_Num);
 
 ALTER TABLE Cost
 	ADD CONSTRAINT cost_flights_fk
-	FOREIGN KEY (Flight_Num),
-	REFERENCES Flights (Flight_Num);
+	FOREIGN KEY (Flight_Num)
+	REFERENCES Flights (Flight_Num);//Constraint 'COST_FLIGHTS_FK' is invalid: there is no unique or primary key constraint on table '"APP"."FLIGHTS"' that matches the number and types of the columns in the foreign key.
 	
 ALTER TABLE GroundWorkers
 	ADD CONSTRAINT ground_workers_fk
-	FOREIGN KEY (Emp_ID),
+	FOREIGN KEY (Emp_ID)
 	REFERENCES Personnel (Emp_ID);
 	
 ALTER TABLE FlightCrew
 	ADD CONSTRAINT flight_member_fk
-	FOREIGN KEY (Emp_ID),
+	FOREIGN KEY (Emp_ID)
 	REFERENCES Personnel (Emp_ID);
 
 ALTER TABLE FlightCrew
 	ADD CONSTRAINT flight_crew_fk
-	FOREIGN KEY (Crew_Num),
+	FOREIGN KEY (Crew_Num)
 	REFERENCES Crew (Crew_Num);
 	
 ALTER TABLE Crew
 	ADD CONSTRAINT crew_flightcrew_fk
-	FOREIGN KEY (FAA_Num),
-	REFERENCES FlightCrew (FAA_Num);
+	FOREIGN KEY (FAA_Num)
+	REFERENCES FlightCrew (FAA_Num);//'FAA_NUM' is not a column in table or VTI 'CREW'.
 	
 ALTER TABLE IncidentReports
 	ADD CONSTRAINT filed_incr_fk
-	FOREIGN KEY (Filed_FAA),
-	REFERENCES FlightCrew (FAA_Num);
+	FOREIGN KEY (Filed_FAA)
+	REFERENCES FlightCrew (FAA_Num);//Constraint 'FILED_INCR_FK' is invalid: there is no unique or primary key constraint on table '"APP"."FLIGHTCREW"' that matches the number and types of the columns in the foreign key.
 
 ALTER TABLE IncidentReports
 	ADD CONSTRAINT reported_incr_fk
-	FOREIGN KEY (Reported_FAA),
-	REFERENCES FlightCrew (FAA_Num);
+	FOREIGN KEY (Reported_FAA)
+	REFERENCES FlightCrew (FAA_Num);//Constraint 'REPORTED_INCR_FK' is invalid: there is no unique or primary key constraint on table '"APP"."FLIGHTCREW"' that matches the number and types of the columns in the foreign key.
 
 ALTER TABLE IncidentReports
 	ADD CONSTRAINT flight_incr_fk
-	FOREIGN KEY (Flight_Num),
-	REFERENCES Flights (Flight_Num);	
+	FOREIGN KEY (Flight_Num)
+	REFERENCES Flights (Flight_Num);//Constraint 'FLIGHT_INCR_FK' is invalid: there is no unique or primary key constraint on table '"APP"."FLIGHTS"' that matches the number and types of the columns in the foreign key.	
 
 INSERT INTO ServiceArea VALUES('Los Angeles');
 INSERT INTO ServiceArea VALUES('New York');
