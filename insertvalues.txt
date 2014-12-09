@@ -95,9 +95,8 @@ INSERT INTO FlightCrew VALUES(3692,'Diana Prince','Captain','F032',369);
 INSERT INTO FlightCrew VALUES(3691,'Barry Allen','Navigator','F031',369);
 INSERT INTO FlightCrew VALUES(3696,'Jonn Jonzz','Co-Pilot','F036',369);
 INSERT INTO FlightCrew VALUES(3693,'Dinah Lance','Attendant','F033',369);
-INSERT INTO FlightCrew VALUES(3695,'Bruce Wayne','Attendant','F035',369);
+INSERT INTO FlightCrew VALUES(3695,'Bruce Wayne','Attendant','F035',369)
 INSERT INTO FlightCrew VALUES(3694,'Oliver Queen','Attendant','F034',369);
-
 INSERT INTO FlightCrew VALUES(4141,'Steve Rogers','Captain','F041',414);
 INSERT INTO FlightCrew VALUES(4149,'Loki Laufeyson','Co-Pilot','F049',414);
 INSERT INTO FlightCrew VALUES(4142,'Clint Barton','Navigator','F042',414);
@@ -105,7 +104,6 @@ INSERT INTO FlightCrew VALUES(4143,'Natasha Romanov','Attendant','F043',414);
 INSERT INTO FlightCrew VALUES(4148,'Thor Odinson','Attendant','F048',414);
 INSERT INTO FlightCrew VALUES(4145,'Maria Hill','Attendant','F045',414);
 INSERT INTO FlightCrew VALUES(4144,'Pietro Maximoff','Attendant','F044',414);
-
 INSERT INTO FlightCrew VALUES(5576,'Kaldur Ahm','Captain','F056',557);
 INSERT INTO FlightCrew VALUES(5571,'Richard Grayson','Co-Pilot','F051',557);
 INSERT INTO FlightCrew VALUES(5574,'Mgann Morzz','Navigator','F054',557);
@@ -122,25 +120,23 @@ INSERT INTO GroundWorkers VALUES(2007,'Bucky Barnes','Janitor');
 INSERT INTO GroundWorkers VALUES(2010,'Clark Kent','Report Analyst');
 INSERT INTO GroundWorkers VALUES(2011,'Peter Parker','Asst Researcher');
 
-INSERT INTO IncidentReports(194,'F033','F034','Complaint','Back-sassing attitude.'); /*Dinah reports Oliver*/
-INSERT INTO IncidentReports(699,'F036','F031','Recognition','Quick thinking.'); /*Jonn on Barry*/
-INSERT INTO IncidentReports(699,'F032','F136','Recognition','Great co-pilot.'); /*Diana on Jonn*/
-INSERT INTO IncidentReports(194,'F035','F032','Recognition','Gracious captain.'); /*Bruce on Diana*/
-
-INSERT INTO IncidentReports(290,'F043','F049','Problem','Conflicting resolution.'); /*Natasha on Loki*/
-INSERT INTO IncidentReports(290,'F048','F049','Recognition','Gracious captain.'); /*Thor on Loki*/
-INSERT INTO IncidentReports(290,'F045','F044','Concern','Not careful.'); /*Maria on Pietro*/
-INSERT INTO IncidentReports(138,'F049','F048','Complaint','Harrassment.'); /*Loki on Thor*/
-INSERT INTO IncidentReports(138,'F042','F043','Complaint','Bossy and mean.'); /*Barton on Natasha*/
-INSERT INTO IncidentReports(138,'F043','F042','Complaint','Lazy.'); /*Natasha on Barton*/
-INSERT INTO IncidentReports(138,'F048','F041','Recognition','Noble leader.'); /*Thor on Captain*/
-INSERT INTO IncidentReports(138,'F045','F041','Recognition','Stupendous captain.'); /*Maria on Captain*/
-
-INSERT INTO IncidentReports(152,'F057','F032','Recognition','Gracious captain.'); /*Zatanna on Artemis*/
-INSERT INTO IncidentReports(152,'F035','F032','Recognition','Gracious captain.'); /*Wally on Kaldur*/
-INSERT INTO IncidentReports(152,'F035','F032','Complaint','Gracious captain.'); /*Connor on Mgann*/
-INSERT INTO IncidentReports(152,'F035','F032','Concern','Gracious captain.'); /*Mgann on Connor*/
-INSERT INTO IncidentReports(152,'F035','F032','Concern','Gracious captain.'); /*Wally on Artemis*/
-INSERT INTO IncidentReports(174,'F035','F032','Complaint','Gracious captain.'); /*Artemis on Wally*/
-INSERT INTO IncidentReports(174,'F035','F032','Problem','Gracious captain.'); /*Richard on Kaldur*/
-INSERT INTO IncidentReports(152,'F035','F032','Recognition','Gracious captain.'); /*Kaldur on Richard*/
+INSERT INTO IncidentReports(194,'F033','F034','Complaint','Back-sassing attitude.');
+INSERT INTO IncidentReports(699,'F036','F031','Recognition','Quick thinking.');
+INSERT INTO IncidentReports(699,'F032','F136','Recognition','Great co-pilot.');
+INSERT INTO IncidentReports(194,'F035','F032','Recognition','Gracious captain.');
+INSERT INTO IncidentReports(290,'F043','F049','Problem','Conflicting resolution.');
+INSERT INTO IncidentReports(290,'F048','F049','Recognition','Gracious captain.');
+INSERT INTO IncidentReports(290,'F045','F044','Concern','Not careful.');
+INSERT INTO IncidentReports(138,'F049','F048','Complaint','Harrassment.');
+INSERT INTO IncidentReports(138,'F042','F043','Complaint','Bossy and mean.');
+INSERT INTO IncidentReports(138,'F043','F042','Complaint','Lazy.');
+INSERT INTO IncidentReports(138,'F048','F041','Recognition','Noble leader.');
+INSERT INTO IncidentReports(138,'F045','F041','Recognition','Stupendous captain.');
+INSERT INTO IncidentReports(152,'F057','F055','Recognition','Efficient and wonderful.');
+INSERT INTO IncidentReports(152,'F052','F056','Recognition','O captain, my captain.');
+INSERT INTO IncidentReports(152,'F053','F054','Complaint','Nosy.');
+INSERT INTO IncidentReports(152,'F054','F053','Concern','External anger mgmt issues.');
+INSERT INTO IncidentReports(152,'F052','F055','Concern','Why so serious.');
+INSERT INTO IncidentReports(174,'F055','F056','Complaint','Dilly-dallyer, bold.');
+INSERT INTO IncidentReports(174,'F051','F056','Problem','Loyalites questionable.');
+INSERT INTO IncidentReports(152,'F056','F051','Recognition','Clever thinking.');
