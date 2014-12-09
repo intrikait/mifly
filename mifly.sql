@@ -1,4 +1,4 @@
-connect 'jdbc:derby:mifly;create=true';
+connect 'jdbc:derby:miflytest13;create=true';
 
 CREATE TABLE ServiceArea
 (
@@ -103,8 +103,8 @@ CREATE TABLE IncidentReports
 ALTER TABLE Airports
 	ADD CONSTRAINT airports_servicearea_fk
 	FOREIGN KEY (Area)
-	REFERENCES ServiceArea(Area);//Constraint 'AIRPORTS_SERVICEAREA_FK' is invalid: there is no unique or primary key constraint on table '"APP"."SERVICEAREA"' that matches the number and types of the columns in the foreign key.
-
+	REFERENCES ServiceArea(Area);
+	
 ALTER TABLE Planes
 	ADD CONSTRAINT planes_airlines_fk
 	FOREIGN KEY (Airline_Name)
@@ -119,7 +119,7 @@ ALTER TABLE Flights
 	ADD CONSTRAINT flights_DEPTport_fk
 	FOREIGN KEY (Dept_Port)
 	REFERENCES Airports (FAA_Abbr);	
-  
+
 ALTER TABLE Flights
 	ADD CONSTRAINT flights_airlines_fk
 	FOREIGN KEY (Airline_Name)
@@ -153,12 +153,12 @@ ALTER TABLE FlightCrew
 ALTER TABLE IncidentReports
 	ADD CONSTRAINT filed_incr_fk
 	FOREIGN KEY (Filed_FAA)
-	REFERENCES FlightCrew (FAA_Num);//Constraint 'FILED_INCR_FK' is invalid: there is no unique or primary key constraint on table '"APP"."FLIGHTCREW"' that matches the number and types of the columns in the foreign key.
+	REFERENCES FlightCrew (FAA_Num);
 
 ALTER TABLE IncidentReports
 	ADD CONSTRAINT reported_incr_fk
 	FOREIGN KEY (Reported_FAA)
-	REFERENCES FlightCrew (FAA_Num);//Constraint 'REPORTED_INCR_FK' is invalid: there is no unique or primary key constraint on table '"APP"."FLIGHTCREW"' that matches the number and types of the columns in the foreign key.
+	REFERENCES FlightCrew (FAA_Num);
 
 ALTER TABLE IncidentReports
 	ADD CONSTRAINT flight_incr_fk
@@ -172,14 +172,24 @@ INSERT INTO ServiceArea VALUES('Seattle');
 INSERT INTO ServiceArea VALUES('Tokyo');
 
 INSERT INTO Airports VALUES('LAX','Los Angeles Airport','Los Angeles','Los Angeles');
-INSERT INTO Airports VALUES('JFK','John F. Kennedy Airport',' New York','Newark');
+INSERT INTO Airports VALUES('JFK','John F. Kennedy Airport','New York','Newark');
 INSERT INTO Airports VALUES('LBX','Long Beach Airport','Los Angeles','Long Beach');
 INSERT INTO Airports VALUES('NRT','Narita International','Tokyo','Narita');
-INSERT INTO Airports VALUES('LGA','LaGuardia Airport',' New York','LaGuardia');
+INSERT INTO Airports VALUES('LGA','LaGuardia Airport','New York','LaGuardia');
 INSERT INTO Airports VALUES('MNL','Ninoy Aquino International','Manila','Manila');
 INSERT INTO Airports VALUES('ONT','Ontario Airport','Los Angeles','Ontario');
 INSERT INTO Airports VALUES('CRK','Clark International','Manila','Pampanga');
 INSERT INTO Airports VALUES('SEA','Seattle-Tacoma International','Seattle','Seattle');
+
+INSERT INTO Airlines VALUES('American Airlines','Los Angeles','LAX','Domestic');
+INSERT INTO Airlines VALUES('Jet Blue','New York','JFK','Domestic');
+INSERT INTO Airlines VALUES('SouthWest Airlines','Dallas','LAX','Local');
+INSERT INTO Airlines VALUES('Philippine Airlines','Manila','MNL','International');
+INSERT INTO Airlines VALUES('Air Japan','Tokyo','NRT','International');
+
+INSERT INTO Crew VALUES(369,3);
+INSERT INTO Crew VALUES(414,4);
+INSERT INTO Crew VALUES(557,5);
 
 INSERT INTO Flights VALUES(194,'JFK','LAX','8:00AM','1:30PM','2014-12-17',300,'Jet Blue',369);
 INSERT INTO Flights VALUES(699,'ONT','LGA','4:00PM','8:00PM','2014-12-17',240,'Jet Blue',369);
@@ -190,20 +200,10 @@ INSERT INTO Flights VALUES(174,'MNL','CRK','5:30PM','6:00PM','2015-01-11',30,'Ph
 INSERT INTO Flights VALUES(120,'LGA','SEA','2:30PM','4:00PM','2015-01-11',210,'American Airlines',369);
 INSERT INTO Flights VALUES(395,'LAX','SEA','3:00PM','4:00PM','2015-01-11',180,'SouthWest Airlines',414);
 
-INSERT INTO Airlines VALUES('American Airlines','Los Angeles','LAX','Domestic');
-INSERT INTO Airlines VALUES('Jet Blue','New York','JFK','Domestic');
-INSERT INTO Airlines VALUES('SouthWest Airlines','Dallas','LAX','Local');
-INSERT INTO Airlines VALUES('Philippine Airlines','Manila','MNL','International');
-INSERT INTO Airlines VALUES('Air Japan','Tokyo','NRT','International');
-
 INSERT INTO Planes VALUES('Jet Blue','B135JB','Boeing','767',285,'Flash');
 INSERT INTO Planes VALUES('American Airlines','A692AA','Arrow','777',420,'');
 INSERT INTO Planes VALUES('SouthWest Airlines','B782SW','Boeing','747',500,'Black Widow');
 INSERT INTO Planes VALUES('Philippine Airlines','B546PI','Boeing','747',605,'');
-
-INSERT INTO Crew VALUES(369,3);
-INSERT INTO Crew VALUES(414,4);
-INSERT INTO Crew VALUES(557,5);
 
 INSERT INTO Cost VALUES(194,'Bag Check',5.95);
 INSERT INTO Cost VALUES(699,'Bag Check',3.45);
@@ -283,7 +283,7 @@ INSERT INTO GroundWorkers VALUES(2011,'Peter Parker','Asst Researcher');
 
 INSERT INTO IncidentReports VALUES(194,'F033','F034','Complaint','Back-sassing attitude.');
 INSERT INTO IncidentReports VALUES(699,'F036','F031','Recognition','Quick thinking.');
-INSERT INTO IncidentReports VALUES(699,'F032','F136','Recognition','Great co-pilot.');
+INSERT INTO IncidentReports VALUES(699,'F032','F036','Recognition','Great co-pilot.');
 INSERT INTO IncidentReports VALUES(194,'F035','F032','Recognition','Gracious captain.');
 INSERT INTO IncidentReports VALUES(290,'F043','F049','Problem','Conflicting resolution.');
 INSERT INTO IncidentReports VALUES(290,'F048','F049','Recognition','Gracious captain.');
